@@ -126,6 +126,7 @@ body {
 .brand-logo {
   bottom: 4em;
   display: block;
+  filter: invert(1) opacity(0.72);
   height: auto;
   opacity: 1;
   pointer-events: none;
