@@ -22,22 +22,27 @@ jobs:
           curl -fsSL https://gosspublic.alicdn.com/ossutil/install.sh | sudo bash
           ossutil --version
 
+      - name: Prepare site files
+        run: |
+          mkdir -p "$RUNNER_TEMP/site"
+          rsync -a --delete ./ "$RUNNER_TEMP/site/" \
+            --exclude ".git/" \
+            --exclude ".github/" \
+            --exclude "node_modules/" \
+            --exclude ".env" \
+            --exclude ".env.*" \
+            --exclude ".DS_Store" \
+            --exclude "Thumbs.db"
+
       - name: Sync site to OSS
         env:
           ALIYUN_ACCESS_KEY_ID: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
           ALIYUN_ACCESS_KEY_SECRET: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
         run: |
-          ossutil sync ./ oss://laiqi-index/ \
+          ossutil sync "$RUNNER_TEMP/site/" oss://laiqi-index/ \
             --region cn-hangzhou \
             --endpoint https://oss-cn-hangzhou.aliyuncs.com \
             --access-key-id "$ALIYUN_ACCESS_KEY_ID" \
             --access-key-secret "$ALIYUN_ACCESS_KEY_SECRET" \
             --delete \
-            --force \
-            --exclude ".git/*" \
-            --exclude ".github/*" \
-            --exclude "node_modules/*" \
-            --exclude ".env" \
-            --exclude ".env.*" \
-            --exclude ".DS_Store" \
-            --exclude "Thumbs.db"
+            --force
