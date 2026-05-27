@@ -12,7 +12,7 @@
 		color: _palette(fg-light);
 		left: 4em;
 		opacity: 0.5;
-		position: absolute;
+		position: fixed;
 
 		.icons {
 			margin: 0 0 (_size(element-margin) * 0.25) 0;
@@ -66,9 +66,6 @@
 		}
 
 		@include breakpoint('short') {
-			bottom: auto;
-			left: auto;
-			margin: (_size(element-margin) * 0.5) 0 0 0;
-			position: relative;
+			margin: 0;
 		}
 	}
