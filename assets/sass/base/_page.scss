@@ -69,11 +69,12 @@
 		}
 
 		@include breakpoint('<=small') {
-			padding: 5em 2em 2em 2em;
+			@include vendor('justify-content', 'flex-start');
+			padding: 2em 2em 8em 2em;
 		}
 
 		@include breakpoint('<=xxsmall') {
-			padding: 5em 1.25em 1.25em 1.25em;
+			padding: 1.25em 1.25em 8em 1.25em;
 		}
 	}
 
@@ -96,15 +97,15 @@
 
 		@include breakpoint('<=small') {
 			bottom: auto;
-			left: 2em;
+			left: auto;
+			margin: 0 0 2em 0;
+			position: relative;
 			right: auto;
-			top: 2em;
+			top: auto;
 			width: min(42vw, 9em);
 		}
 
 		@include breakpoint('<=xxsmall') {
-			left: 1.25em;
-			top: 1.25em;
 			width: 8em;
 		}
 	}
