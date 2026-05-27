@@ -76,3 +76,34 @@
 			padding: 5em 1.25em 1.25em 1.25em;
 		}
 	}
+
+	.brand-logo {
+		bottom: 4em;
+		display: block;
+		height: auto;
+		opacity: 0.42;
+		pointer-events: none;
+		position: fixed;
+		right: 4em;
+		width: min(24vw, 18em);
+		z-index: 2;
+
+		@include breakpoint('<=xlarge') {
+			bottom: 3.5em;
+			right: 3.5em;
+		}
+
+		@include breakpoint('<=small') {
+			bottom: auto;
+			left: 2em;
+			right: auto;
+			top: 2em;
+			width: min(42vw, 9em);
+		}
+
+		@include breakpoint('<=xxsmall') {
+			left: 1.25em;
+			top: 1.25em;
+			width: 8em;
+		}
+	}
